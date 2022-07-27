@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="stylesheet.css">
+        <title>CRUDS - Storage project</title>
+        <link rel="icon" type="image/x-icon" href="logo.ico">
+        <script src="script.js"></script>
+    </head>
+    <body>
+        <header>
+            <h1 class="title white">CRUDS</h1>
+            <h2 class="title o white uppercase">CREATE READ update SEARCH</h2>
+        </header>
+        <section id="details" class="flexbox alignitemscenter flexboxDirectionColumn">
+            <input class="ProductName" type="text" placeholder="Product name.."><br>
+            <div class="BTNContainer1 flexbox justifycenter flexboxDirectionRow" style="width: 95%;">
+                <input class="Price" type="number" placeholder="Price..">
+                <input class="Taxes" type="number" placeholder="Taxes..">
+                <input class="Ads" type="number" placeholder="Ads..">
+                <input class="Discount" type="number" placeholder="Discount..">
+                <div class="Total white bgred">Total: Undefined</div>    
+            </div>
+            <br>
+            <input class="Count" type="number" placeholder="Count">
+            <input class="Category" type="text" placeholder="Category..">
+            <br>
+            <button type="button" class="CreateButton bgdarkgray white">Create</button>
+            <br>
+            <input class="SearchBar" type="text" placeholder="Search..">
+            <br>
+            <div class="BTNContainer2 flexbox justifycenter flexboxDirectionRow">
+                <button type="button" class="SBCategory bgdarkgray white">Search by Category</button>
+                <button type="button" class="SBName bgdarkgray white">Search by Product name</button>
+            </div>
+            <br>
+            <button type="button" class="DeleteAll bgred white">Delete All (0)</button>
+        </section>
+        <br>
+        <br>
+        <section id="products">
+            <table>
+                <tr class="notme">
+                    <th><h3 class="uppercase white">id</h3></th>
+                    <th><h3 class="uppercase white">name</h3></th>
+                    <th><h3 class="uppercase white">price</h3></th>
+                    <th><h3 class="uppercase white">taxes</h3></th>
+                    <th><h3 class="uppercase white">ads</h3></th>
+                    <th><h3 class="uppercase white">Discount</h3></th>
+                    <th><h3 class="uppercase white">Total</h3></th>
+                    <th><h3 class="uppercase white">Category</h3></th>
+                    <th><h3 class="uppercase white">update</h3></th>
+                    <th><h3 class="uppercase white">delete</h3></th>
+                </tr>
+            </table>
+        </section>
+        <section id="UpdateProduct">
+            <div class="blackscreen flexbox justifycenter alignitemscenter">
+                <div class="updatelabel bggray flexbox flexboxDirectionColumn">
+                    <h3 class="title ProductUpdateName">Update samsung A13</h3>
+                    <br>
+                    <input class="ProductNameU" type="text" placeholder="Product name.."><br>
+                    <div class="BTNContainer1 flexbox justifycenter flexboxDirectionRow" style="width: 95%;">
+                        <input class="PriceU" type="number" placeholder="Price..">
+                        <input class="TaxesU" type="number" placeholder="Taxes..">
+                        <input class="AdsU" type="number" placeholder="Ads..">
+                        <input class="DiscountU" type="number" placeholder="Discount..">
+                        <div class="TotalU white bgred">Total: Undefined</div>    
+                    </div>
+                    <br>
+                    <input class="CountU" type="number" placeholder="Count">
+                    <input class="CategoryU" type="text" placeholder="Category..">
+                    <br>
+                    <button type="button" class="ConfirmButton bgdarkgray white">Confirm</button>
+                    <button type="button" class="CloseButton bgdarkgray white">Close</button>
+                </div>
+            </div>
+        </section>
+    </body>
+</html>
