@@ -30,6 +30,15 @@ onload = function()
     var CategoryU = document.querySelector(".CategoryU");
 
     ProductName.focus();
+    function CheckIconify(value)
+    {
+        let returned = false;
+        if (value != "iconify-count" && value != "iconify-version" && value != "iconify0")
+        {
+            returned = true;   
+        }
+        return returned;
+    }
 
     function CountTotal()
     {
@@ -54,7 +63,7 @@ onload = function()
         let ProductsArray = [];
         for (let i = 0; i < Products.length; i++)
         {
-            if (localStorage[Products[i].id])
+            if (localStorage[Products[i].id] &&	CheckIconify(localStorage[Products[i].id]) == true)
             {
                 ProductsArray.push(Products[i]);
             }
@@ -144,7 +153,7 @@ onload = function()
 
         DELETE.onclick = function()
         {
-            if (object.Count > 1)
+            if (object.Count > 1 && CheckIconify(localStorage[object.Name]) == true)
             {
                 var newo = JSON.parse(localStorage[object.Name]);
                 newo.Count -= 1;
@@ -180,10 +189,10 @@ onload = function()
         TaxesU.value = object.Taxes;
         AdsU.value = object.Ads;
         DiscountU.value = object.Discount;
-        TotalU.innerHTML = "Total: " + object.Total;
+        TotalU.innerHTML = `Total: ${object.Total}`;
         CountU.value = object.Count;
         CategoryU.value = object.Category;
-        TotalU.className = "Total white bggreen";
+        TotalU.className = `Total white bggreen`;
 
         let totalValueU;
         PriceU.oninput = function()
@@ -246,11 +255,14 @@ onload = function()
         {
             for (let i = 0; i < localStorage.length; i++)
             {
-                let object = JSON.parse(localStorage.getItem(localStorage.key(i)));
-                for (let x = 0; x < object.Count; x++)
+                if (CheckIconify(localStorage.getItem(localStorage.key(i))) == true)
                 {
-                    z++
-                    CreateTProduct(object, z);
+                    let object = JSON.parse(localStorage.getItem(localStorage.key(i)));
+                    for (let x = 0; x < object.Count; x++)
+                    {
+                        z++
+                        CreateTProduct(object, z);
+                    }    
                 }
             }
         }
@@ -260,7 +272,10 @@ onload = function()
         let value = 0;
         for (let i = 0; i < localStorage.length; i++)
         {
-            value++;
+            if (CheckIconify(localStorage.getItem(localStorage.key(i))) == true)
+            {
+                value++;
+            }
         }
         return value+1;
     }
@@ -269,8 +284,11 @@ onload = function()
         let value = 0;
         for (let i = 0; i < localStorage.length; i++)
         {
-            let Oobject = JSON.parse(localStorage.getItem(localStorage.key(i)));
-            value+= Oobject.Count;
+            if (CheckIconify(localStorage.getItem(localStorage.key(i))) == true)
+            {
+                let Oobject = JSON.parse(localStorage.getItem(localStorage.key(i)));
+                value+= Oobject.Count;    
+            }
         }
         return value;
     }
@@ -294,7 +312,7 @@ onload = function()
         totalValue = CountTotal();
     };
 
-    function CreateNewProduct(ProductNameV, totalValueV, CategoryV, countNumber, pricev, taxesv, adsv, discountv)
+    function CreateNewProduct(ProductNameV, totalValueV, CategoryV, countNumber = 1, pricev, taxesv, adsv, discountv)
     {
         let object = {
             Name: ProductNameV,
@@ -324,8 +342,7 @@ onload = function()
                 }
                 else
                 {
-                    let virtualCount = 1;
-                    CreateNewProduct(ProductName.value, totalValue, Category.value, virtualCount, Number(Price.value), Number(Taxes.value), Number(Ads.value), Number(Discount.value));
+                    CreateNewProduct(ProductName.value, totalValue, null, virtualCount, Number(Price.value), Number(Taxes.value), Number(Ads.value), Number(Discount.value));
                 }
             }
         }
