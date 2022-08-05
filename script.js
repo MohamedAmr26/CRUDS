@@ -1,3 +1,9 @@
+    /////////////////////
+    localStorage.removeItem("iconify0");
+    localStorage.removeItem("iconify-count");
+    localStorage.removeItem("iconify-version");
+    /////////////////////
+
 onload = function()
 {
     var ProductName = this.document.querySelector('.ProductName');
@@ -32,12 +38,10 @@ onload = function()
     ProductName.focus();
     function CheckIconify(value)
     {
-        let returned = false;
-        if (value != "iconify-count" && value != "iconify-version" && value != "iconify0")
-        {
-            returned = true;   
-        }
-        return returned;
+        localStorage.removeItem("iconify0");
+        localStorage.removeItem("iconify-count");
+        localStorage.removeItem("iconify-version");    
+        return true;
     }
 
     function CountTotal()
@@ -311,7 +315,6 @@ onload = function()
     {
         totalValue = CountTotal();
     };
-
     function CreateNewProduct(ProductNameV, totalValueV, CategoryV, countNumber = 1, pricev, taxesv, adsv, discountv)
     {
         let object = {
