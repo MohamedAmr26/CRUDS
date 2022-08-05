@@ -1,4 +1,4 @@
-    /////////////////////
+    ////////////////////
     localStorage.removeItem("iconify0");
     localStorage.removeItem("iconify-count");
     localStorage.removeItem("iconify-version");
